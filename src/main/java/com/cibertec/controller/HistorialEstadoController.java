@@ -22,8 +22,8 @@ public class HistorialEstadoController {
     private HistorialEstadoService service;
 
     @PostMapping
-    public void registrar(@RequestBody HistorialEstado historial) {
-        service.registrarCambio(historial);
+    public HistorialEstado registrar(@RequestBody HistorialEstado historial) {
+        return service.registrarCambio(historial);
     }
 
     @GetMapping("/incidencia/{id}")

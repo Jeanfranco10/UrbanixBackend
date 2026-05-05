@@ -13,8 +13,8 @@ public class HistorialEstadoService {
 	@Autowired
     private HistorialEstadoRespository repository;
 
-    public void registrarCambio(HistorialEstado historial) {
-        repository.save(historial);
+    public HistorialEstado registrarCambio(HistorialEstado historial) {
+        return repository.save(historial);
     }
 
     public List<HistorialEstado> obtenerHistorial(Integer incidenciaId) {

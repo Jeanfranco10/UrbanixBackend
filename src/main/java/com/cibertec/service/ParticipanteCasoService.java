@@ -9,7 +9,7 @@ import com.cibertec.model.ParticipanteCaso;
 import com.cibertec.repository.ParticipanteRepository;
 
 @Service
-public class PaticipanteCasoServoce {
+public class ParticipanteCasoService {
 	
 	@Autowired
     private ParticipanteRepository repository;

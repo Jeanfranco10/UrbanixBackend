@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cibertec.model.ParticipanteCaso;
-import com.cibertec.service.PaticipanteCasoServoce;
+import com.cibertec.service.ParticipanteCasoService;
 
 @RestController
 @RequestMapping("/api/participantes-casos")
 @CrossOrigin(origins = "*")
 public class ParticipanteCasoController {
     @Autowired
-    private PaticipanteCasoServoce service; // Nombre exacto de tu Service
+    private ParticipanteCasoService service;
 
     @PostMapping("/unirse")
     public ParticipanteCaso unirse(@RequestBody ParticipanteCaso participante) {
