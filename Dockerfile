@@ -5,6 +5,6 @@ RUN mvn clean package -DskipTests
 
 # Fase de ejecución
 FROM openjdk:17.0.1-jdk-slim
-COPY --from=build /target/*.jar app.jar
+COPY --from=build target/*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","app.jar"]
