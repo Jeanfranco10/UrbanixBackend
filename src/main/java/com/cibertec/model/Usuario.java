@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import com.cibertec.enums.Modelos_enum.RolUsuario;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,6 +23,7 @@ import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "usuarios")
 @Getter @Setter
@@ -41,6 +43,7 @@ public class Usuario {
     @Column(length = 20)
     private String telefono;
 
+    @JsonIgnore
     @Column(name = "contrasena_hash", nullable = false)
     private String contrasenaHash;
 

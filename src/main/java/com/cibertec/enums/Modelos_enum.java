@@ -1,12 +1,22 @@
 package com.cibertec.enums;
 
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 public class Modelos_enum {
 	
 	// Mapeo de los datos tipo EMUM
 	
 	
-	public enum RolUsuario { ciudadano, inspector, responsable_area, administrador }
+	public enum RolUsuario { ciudadano, inspector, responsable_area, administrador;
+		@JsonCreator
+		public static RolUsuario fromValue(String value) {
+			for (RolUsuario rol : values()) {
+				if (rol.name().equalsIgnoreCase(value)) return rol;
+			}
+			throw new IllegalArgumentException("Rol desconocido: " + value);
+		}
+	}
 
 	public enum EstadoIncidencia { pendiente, en_revision, en_proceso, resuelto, rechazado, cerrado }
 

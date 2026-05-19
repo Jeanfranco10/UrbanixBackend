@@ -41,6 +41,16 @@ public class UsuarioController {
     public Usuario crear(@RequestBody Usuario usuario) {
         return service.guardar(usuario);
     }
+    @PatchMapping("/{id}/rol")
+    public ResponseEntity<Usuario> cambiarRol(@PathVariable Integer id, @RequestBody Usuario datos) {
+        Usuario user = service.buscarPorId(id);
+        if (user != null && datos.getRol() != null) {
+            user.setRol(datos.getRol());
+            return ResponseEntity.ok(service.guardar(user));
+        }
+        return ResponseEntity.notFound().build();
+    }
+
     @PatchMapping("/{id}")
     public ResponseEntity<Usuario> editar(@PathVariable Integer id, @RequestBody Usuario datos) {
         Usuario user = service.buscarPorId(id);
@@ -48,7 +58,6 @@ public class UsuarioController {
             if (datos.getNombre() != null) user.setNombre(datos.getNombre());
             if (datos.getTelefono() != null) user.setTelefono(datos.getTelefono());
             if (datos.getContrasenaHash() != null) user.setContrasenaHash(datos.getContrasenaHash());
-            if (datos.getRol() != null) user.setRol(datos.getRol());        // AGREGAR
             if (datos.getActivo() != null) user.setActivo(datos.getActivo()); // AGREGAR
             if (datos.getArea() != null) user.setArea(datos.getArea());      // AGREGAR
 

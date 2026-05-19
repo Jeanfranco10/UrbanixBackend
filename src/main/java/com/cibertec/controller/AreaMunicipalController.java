@@ -1,6 +1,8 @@
 package com.cibertec.controller;
 
 import java.util.List;
+
+import com.cibertec.dto.AreaResumenDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +17,8 @@ public class AreaMunicipalController {
     private AreaMunicipalService service;
 
     @GetMapping
-    public List<AreaMunicipal> listar() {
-        return service.listarTodas();
+    public List<AreaResumenDTO> listar() {
+        return service.listarTodasConResumen();
     }
 
     @PostMapping
