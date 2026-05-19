@@ -20,7 +20,11 @@ public class IncidenciasServices {
     }
 
     public Incidencia registrar(Incidencia incidencia) {
-       
+
+        if (incidencia.getCodigo() == null || incidencia.getCodigo().isBlank()) {
+            String codigo = "INC-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase();
+            incidencia.setCodigo(codigo);
+        }
         return repository.save(incidencia);
     }
     
